@@ -140,7 +140,6 @@ document.querySelector('#nope').addEventListener('click', () => swipe(topCard(),
 document.querySelector('#super').addEventListener('click', () => {
   const card = topCard();
   if (!card) return;
-  matchCount += 1;
   showToast(`Super liked ${card.dataset.name} ⭐`);
   swipe(card, 'right');
 });
