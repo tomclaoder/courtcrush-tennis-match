@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f3d2e" />
+  <title>CourtCrush 🎾</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app" aria-label="CourtCrush tennis matchmaking app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Tennis matchmaking</p>
+        <h1>CourtCrush <span>🎾</span></h1>
+      </div>
+      <button id="reset" class="ghost" type="button">Reset</button>
+    </header>
+
+    <section class="scorebar" aria-live="polite">
+      <span id="remaining">5 players</span>
+      <span id="matches">0 matches</span>
+    </section>
+
+    <section id="deck" class="deck" aria-label="Swipe tennis profiles"></section>
+
+    <section class="actions" aria-label="Profile actions">
+      <button id="nope" class="round nope" type="button" aria-label="Pass">✕</button>
+      <button id="super" class="round super" type="button" aria-label="Super like">★</button>
+      <button id="like" class="round like" type="button" aria-label="Like">♥</button>
+    </section>
+
+    <p class="hint">Drag a card left/right on touch or mouse. Swipe right to match, left to pass.</p>
+  </main>
+
+  <template id="card-template">
+    <article class="card" tabindex="0">
+      <div class="stamp like-stamp">LIKE</div>
+      <div class="stamp nope-stamp">NOPE</div>
+      <img class="photo" alt="" draggable="false" />
+      <div class="gradient"></div>
+      <div class="bio">
+        <div class="name-row">
+          <h2></h2>
+          <span class="age"></span>
+        </div>
+        <p class="tagline"></p>
+        <div class="chips"></div>
+      </div>
+    </article>
+  </template>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

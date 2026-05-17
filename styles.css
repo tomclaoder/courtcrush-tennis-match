@@ -1,0 +1,48 @@
+:root {
+  color-scheme: dark;
+  --bg: #071812;
+  --panel: #10291f;
+  --card: #173c2d;
+  --text: #f3fff8;
+  --muted: #b5d9c6;
+  --green: #4ade80;
+  --lime: #bef264;
+  --red: #fb7185;
+  --gold: #facc15;
+  --shadow: 0 24px 70px rgba(0,0,0,.46);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: radial-gradient(circle at top, #1d6b49 0, #071812 52%); color: var(--text); overflow-x: hidden; }
+body { min-height: 100svh; display: grid; place-items: center; padding: 18px; touch-action: manipulation; }
+.app { width: min(440px, 100%); min-height: min(840px, 100svh - 24px); display: flex; flex-direction: column; gap: 14px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 8px 4px; }
+.eyebrow { margin: 0 0 2px; color: var(--lime); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; font-weight: 800; }
+h1 { margin: 0; font-size: clamp(34px, 8vw, 46px); line-height: .95; }
+.ghost { border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.08); color: var(--text); border-radius: 999px; padding: 10px 14px; font-weight: 800; }
+.scorebar { display: flex; justify-content: space-between; padding: 12px 16px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); border-radius: 18px; color: var(--muted); font-weight: 800; }
+.deck { position: relative; flex: 1; min-height: 560px; perspective: 1200px; }
+.card { position: absolute; inset: 0; border-radius: 34px; overflow: hidden; background: var(--card); box-shadow: var(--shadow); cursor: grab; user-select: none; touch-action: none; transform-origin: 50% 90%; will-change: transform; border: 1px solid rgba(255,255,255,.13); }
+.card:active { cursor: grabbing; }
+.card.removing { transition: transform .36s cubic-bezier(.2,.8,.2,1), opacity .36s; }
+.card.snapback { transition: transform .28s cubic-bezier(.2,.8,.2,1); }
+.photo { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+.gradient { position: absolute; inset: 40% 0 0; background: linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,.42), transparent); pointer-events: none; }
+.bio { position: absolute; left: 0; right: 0; bottom: 0; padding: 0 24px 28px; text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+.name-row { display: flex; align-items: baseline; gap: 10px; }
+h2 { margin: 0; font-size: 36px; }
+.age { font-size: 26px; color: #d9ffe9; font-weight: 800; }
+.tagline { margin: 8px 0 16px; color: #e8fff0; font-size: 16px; line-height: 1.35; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { padding: 7px 10px; border-radius: 999px; background: rgba(255,255,255,.16); backdrop-filter: blur(10px); color: #f6fff9; font-weight: 800; font-size: 13px; }
+.stamp { position: absolute; z-index: 2; top: 38px; border: 6px solid; border-radius: 14px; padding: 5px 14px; font-size: 38px; font-weight: 1000; letter-spacing: .08em; opacity: 0; transform: rotate(-14deg); pointer-events: none; }
+.like-stamp { left: 26px; color: var(--green); border-color: var(--green); }
+.nope-stamp { right: 24px; color: var(--red); border-color: var(--red); transform: rotate(14deg); }
+.actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 6px 28px 0; }
+.round { aspect-ratio: 1; border-radius: 50%; border: 0; color: white; font-size: 30px; font-weight: 1000; box-shadow: 0 14px 32px rgba(0,0,0,.34); }
+.nope { background: linear-gradient(145deg, #f43f5e, #991b1b); }
+.super { background: linear-gradient(145deg, #fde047, #d97706); }
+.like { background: linear-gradient(145deg, #4ade80, #047857); }
+.hint { margin: 0; text-align: center; color: var(--muted); font-size: 13px; }
+.toast { position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); transform: translateX(-50%) translateY(18px); opacity: 0; background: rgba(9, 33, 24, .95); color: white; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 12px 18px; font-weight: 900; box-shadow: var(--shadow); transition: .25s ease; pointer-events: none; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+@media (max-height: 760px) { .deck { min-height: 480px; } .bio { padding-bottom: 22px; } }
